@@ -14,15 +14,19 @@ available.
 ## API
 
 ```lua
-nitrogen.text()                 -- the whole text of the active tab
+nitrogen.text([n])              -- the whole text of the active tab
 nitrogen.set_text(s)            -- replace it (one undo step; does not save)
 nitrogen.open_text(s [, name])  -- show s in a new tab (name: untitled.xml)
 nitrogen.message(s)             -- one dialog
-nitrogen.file_name()            -- path of the active tab, or nil when unsaved
+nitrogen.file_name([n])         -- path of the active tab, or nil when unsaved
 
 nitrogen.run(exe, args, stdin)  -- returns stdout, stderr, exit code
 nitrogen.temp_file(s)           -- writes s to a temp file, returns its path
 ```
+
+`n` picks a tab relative to the active one: `-1` is the tab to its left,
+`1` the tab to its right, and leaving it out means the active tab itself.
+`transform.lua` reads the tab to the left this way.
 
 `open_text` names the tab, and the extension decides the syntax highlighting,
 so pass `"rows.xml"` when you have built XML.
@@ -32,7 +36,8 @@ its text: the editor buffer is already decoded and its line ends are
 normalised, so `encoding.lua` and `lineends.lua` open the path and read the
 raw bytes with Lua's own `io`.
 
-`text()` and `set_text()` raise an error when no file is open. Any error a
+`text()` raises an error when there is no such tab, `set_text()` when no
+file is open. Any error a
 gadget raises is shown in a dialog.
 
 `run` waits for the command. If it takes longer than a moment, a box appears
@@ -55,7 +60,10 @@ if code == 0 then nitrogen.open_text(out, "answer.xml") end
 | --- | --- |
 | `helloworld.lua` | One dialog. The smallest gadget there is. |
 | `charcount.lua` | Counts characters, bytes and lines in the active tab. |
+| `encoding.lua` | Guesses the encoding of the saved file from its bytes (UTF-8, ASCII, UTF-16, Shift_JIS, EUC-JP...) and says whether Nitrogen can open it. |
+| `lineends.lua` | Counts CRLF, LF and CR line ends in the saved file, and says which one Nitrogen will save with when they are mixed. |
 | `csv2xml.lua` | Turns the CSV in the active tab into XML in a new tab. |
 | `xml2html.lua` | Runs the active tab through xsltproc and opens the outline it produces. Works on any XML. |
+| `transform.lua` | Applies the XSLT in the active tab to the XML in the tab just to its left, with xsltproc. The result opens in a new tab. |
 | `validate.lua` | Validates the active tab against the XSD it names in `xsi:noNamespaceSchemaLocation`, by calling xmllint. Says so when xmllint is not on PATH. |
 | `xslt1skel.lua` | Writes an XSLT 1.0 identity-transform skeleton. Fills the tab when it is empty, opens a new one when it is not. |
