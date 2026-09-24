@@ -2,7 +2,7 @@
 
 Gadgets are small Lua scripts that show up in Nitrogen's **Gadgets** menu.
 Drop a `.lua` file into the `gadgets` folder next to `nitrogenxml.exe` and it
-is there the next time you start Nitrogen. No rebuild, no install.
+is there the next time you open the menu.
 
 Menu entries are the file names, in alphabetical order. A folder inside
 `gadgets` becomes a submenu of the same name, as deep as the folders go, so
