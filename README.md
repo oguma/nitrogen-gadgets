@@ -65,5 +65,7 @@ if code == 0 then nitrogen.open_text(out, "answer.xml") end
 | `csv2xml.lua` | Turns the CSV in the active tab into XML in a new tab. |
 | `xml2html.lua` | Runs the active tab through xsltproc and opens the outline it produces. Works on any XML. |
 | `transform.lua` | Applies the XSLT in the active tab to the XML in the tab just to its left, with xsltproc. The result opens in a new tab. |
+| `md2pdf.lua` | Turns the saved Markdown file into a PDF next to it, with pandoc and typst. Unsaved edits are not included. |
 | `validate.lua` | Validates the active tab against the XSD it names in `xsi:noNamespaceSchemaLocation`, by calling xmllint. Says so when xmllint is not on PATH. |
+| `xmlprettify.lua` | Indents the XML in the active tab with `xmllint --format`, in place (one undo step). Leaves the text alone and shows the error when it is not well-formed. |
 | `xslt1skel.lua` | Writes an XSLT 1.0 identity-transform skeleton. Fills the tab when it is empty, opens a new one when it is not. |
