@@ -33,7 +33,7 @@ local out, err, code = nitrogen.run("claude",
 if code == 0 then nitrogen.open_text(out, "answer.xml") end
 ```
 
-## Goodies
+## Samples
 
 These come with Nitrogen, and an update overwrites them. Keep your own
 gadgets in a folder of your own.
