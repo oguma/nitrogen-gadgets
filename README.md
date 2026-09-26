@@ -40,16 +40,16 @@ gadgets in a folder of your own.
 
 | File | What it does |
 | --- | --- |
-| `convert/csv2xml.lua` | CSV to XML |
-| `convert/md2pdf.lua` | Markdown to PDF, with pandoc and typst |
-| `inspect/charcount.lua` | Counts characters, bytes and lines |
-| `inspect/encoding.lua` | Guesses the encoding of the saved file |
-| `inspect/lineends.lua` | Counts CRLF, LF and CR in the saved file |
-| `skel/skelsch.lua` | Schematron skeleton |
-| `skel/skelxml.lua` | XML skeleton |
-| `skel/skelxsd.lua` | XSD skeleton |
-| `skel/skelxslt1.lua` | XSLT 1.0 skeleton |
-| `xml/transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
-| `xml/validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in an `sch` folder next to `nitrogenxml.exe` |
-| `xml/validatexsd.lua` | XSD validation, with xmllint |
-| `xml/xmlprettify.lua` | Indents XML, with xmllint |
+| `csv2xml.lua` | CSV to XML |
+| `md2pdf.lua` | Markdown to PDF, with pandoc and typst |
+| `charcount.lua` | Counts characters, bytes and lines |
+| `encoding.lua` | Guesses the encoding of the saved file |
+| `lineends.lua` | Counts CRLF, LF and CR in the saved file |
+| `skelsch.lua` | Schematron skeleton |
+| `skelxml.lua` | XML skeleton |
+| `skelxsd.lua` | XSD skeleton |
+| `skelxslt1.lua` | XSLT 1.0 skeleton |
+| `transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
+| `validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in an `sch` folder next to `nitrogenxml.exe` |
+| `validatexsd.lua` | XSD validation, with xmllint |
+| `xmlprettify.lua` | Indents XML, with xmllint |
