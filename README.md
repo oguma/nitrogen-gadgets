@@ -1,21 +1,12 @@
 # Gadgets
 
-Gadgets are small Lua scripts that show up in Nitrogen's **Gadgets** menu.
-Drop a `.lua` file into the `gadgets` folder next to `nitrogenxml.exe` and it
-is there the next time you open the menu.
-
-The smallest gadget is one line:
+Gadgets are small Lua scripts in Nitrogen's **Gadgets** menu. Put a `.lua`
+file in the `gadgets` folder next to `nitrogenxml.exe`, and it shows up in
+the menu. Folders become submenus.
 
 ```lua
 nitrogen.message("Hello World!")
 ```
-
-Menu entries are the file names, in alphabetical order. A folder inside
-`gadgets` becomes a submenu of the same name, as deep as the folders go, so
-a growing pile of scripts can be sorted into folders.
-
-Lua 5.4 is built into `nitrogenxml.exe`; the standard library is fully
-available.
 
 ## API
 
@@ -31,28 +22,10 @@ nitrogen.temp_file(s)           -- writes s to a temp file, returns its path
 nitrogen.dir()                  -- the folder nitrogenxml.exe is in
 ```
 
-`n` picks a tab relative to the active one: `-1` is the tab to its left,
-`1` the tab to its right, and leaving it out means the active tab itself.
-`xml/transform.lua` reads the tab to the left this way.
+`n` picks a tab: `-1` is the one to the left. Lua 5.4 with its full standard
+library.
 
-`open_text` names the tab, and the extension decides the syntax highlighting,
-so pass `"rows.xml"` when you have built XML.
-
-`file_name()` is for gadgets that care about the file itself rather than
-its text: the editor buffer is already decoded and its line ends are
-normalised, so `inspect/encoding.lua` and `inspect/lineends.lua` open the
-path and read the raw bytes with Lua's own `io`.
-
-`text()` raises an error when there is no such tab, `set_text()` when no
-file is open. Any error a gadget raises is shown in a dialog.
-
-`run` waits for the command. If it takes longer than a moment, a box appears
-with a Cancel button. A command that cannot be started comes back with exit
-code -1 and the reason in stderr, so a gadget can say what is missing instead
-of doing nothing. Temp files are deleted when Nitrogen exits.
-
-`run` is how a gadget reaches anything else on the machine.
-`xml/transform.lua` calls xsltproc; the same four lines call a headless Claude:
+`run` can call anything on the machine, even Claude:
 
 ```lua
 local out, err, code = nitrogen.run("claude",
@@ -60,27 +33,23 @@ local out, err, code = nitrogen.run("claude",
 if code == 0 then nitrogen.open_text(out, "answer.xml") end
 ```
 
-`dir()` is for files a gadget needs beside it: `xml/validatesch.lua` looks
-for the ISO Schematron XSLT files in a `schematron` folder next to
-`nitrogenxml.exe`.
-
 ## Goodies
 
-Nitrogen comes with these. An update overwrites them, so keep your own
+These come with Nitrogen, and an update overwrites them. Keep your own
 gadgets in a folder of your own.
 
 | File | What it does |
 | --- | --- |
-| `convert/csv2xml.lua` | Turns the CSV in the active tab into XML in a new tab. |
-| `convert/md2pdf.lua` | Turns the saved Markdown file into a PDF next to it, with pandoc and typst. Unsaved edits are not included. |
-| `inspect/charcount.lua` | Counts characters, bytes and lines in the active tab. |
-| `inspect/encoding.lua` | Guesses the encoding of the saved file from its bytes (UTF-8, ASCII, UTF-16, Shift_JIS, EUC-JP...) and says whether Nitrogen can open it. |
-| `inspect/lineends.lua` | Counts CRLF, LF and CR line ends in the saved file, and says which one Nitrogen will save with when they are mixed. |
-| `skel/skelsch.lua` | Writes an ISO Schematron skeleton with one pattern, rule and assert. Fills the tab when it is empty, opens a new one when it is not. |
-| `skel/skelxml.lua` | Writes an XML skeleton that links to an XSD and a Schematron schema. Fills the tab when it is empty, opens a new one when it is not. |
-| `skel/skelxsd.lua` | Writes an XSD skeleton with one root element. Fills the tab when it is empty, opens a new one when it is not. |
-| `skel/skelxslt1.lua` | Writes an XSLT 1.0 identity-transform skeleton. Fills the tab when it is empty, opens a new one when it is not. |
-| `xml/transform.lua` | Applies the XSLT in the active tab to the XML in the tab just to its left, with xsltproc. The result opens in a new tab. |
-| `xml/validatesch.lua` | Checks the active tab against the Schematron schema it names in `<?xml-model?>`, with xsltproc and the ISO Schematron XSLT 1.0 files in a `schematron` folder next to `nitrogenxml.exe`. Says where to get them when they are missing. |
-| `xml/validatexsd.lua` | Validates the active tab against the XSD it names in `xsi:noNamespaceSchemaLocation`, by calling xmllint. Says so when xmllint is not on PATH. |
-| `xml/xmlprettify.lua` | Indents the XML in the active tab with `xmllint --format`, in place (one undo step). Leaves the text alone and shows the error when it is not well-formed. |
+| `convert/csv2xml.lua` | CSV to XML |
+| `convert/md2pdf.lua` | Markdown to PDF, with pandoc and typst |
+| `inspect/charcount.lua` | Counts characters, bytes and lines |
+| `inspect/encoding.lua` | Guesses the encoding of the saved file |
+| `inspect/lineends.lua` | Counts CRLF, LF and CR in the saved file |
+| `skel/skelsch.lua` | Schematron skeleton |
+| `skel/skelxml.lua` | XML skeleton |
+| `skel/skelxsd.lua` | XSD skeleton |
+| `skel/skelxslt1.lua` | XSLT 1.0 skeleton |
+| `xml/transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
+| `xml/validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in a `schematron` folder next to `nitrogenxml.exe` |
+| `xml/validatexsd.lua` | XSD validation, with xmllint |
+| `xml/xmlprettify.lua` | Indents XML, with xmllint |
