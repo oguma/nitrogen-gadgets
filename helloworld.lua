@@ -1,1 +1,0 @@
-nitrogen.message("Hello World!")
