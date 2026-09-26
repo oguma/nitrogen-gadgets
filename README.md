@@ -42,13 +42,13 @@ gadgets in a folder of your own.
 | --- | --- |
 | `csv2xml.lua` | CSV to XML |
 | `md2pdf.lua` | Markdown to PDF, with pandoc and typst |
-| `charcount.lua` | Counts characters, bytes and lines |
-| `encoding.lua` | Guesses the encoding of the saved file |
-| `lineends.lua` | Counts CRLF, LF and CR in the saved file |
 | `skelsch.lua` | Schematron skeleton |
 | `skelxml.lua` | XML skeleton |
 | `skelxsd.lua` | XSD skeleton |
 | `skelxslt1.lua` | XSLT 1.0 skeleton |
+| `charcount.lua` | Counts characters, bytes and lines |
+| `encoding.lua` | Guesses the encoding of the saved file |
+| `lineends.lua` | Counts CRLF, LF and CR in the saved file |
 | `transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
 | `validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in an `sch` folder next to `nitrogenxml.exe` |
 | `validatexsd.lua` | XSD validation, with xmllint |
