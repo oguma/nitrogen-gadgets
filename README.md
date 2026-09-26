@@ -58,14 +58,14 @@ if code == 0 then nitrogen.open_text(out, "answer.xml") end
 
 | File | What it does |
 | --- | --- |
-| `helloworld.lua` | One dialog. The smallest gadget there is. |
 | `charcount.lua` | Counts characters, bytes and lines in the active tab. |
-| `encoding.lua` | Guesses the encoding of the saved file from its bytes (UTF-8, ASCII, UTF-16, Shift_JIS, EUC-JP...) and says whether Nitrogen can open it. |
-| `lineends.lua` | Counts CRLF, LF and CR line ends in the saved file, and says which one Nitrogen will save with when they are mixed. |
 | `csv2xml.lua` | Turns the CSV in the active tab into XML in a new tab. |
-| `transform.lua` | Applies the XSLT in the active tab to the XML in the tab just to its left, with xsltproc. The result opens in a new tab. |
+| `encoding.lua` | Guesses the encoding of the saved file from its bytes (UTF-8, ASCII, UTF-16, Shift_JIS, EUC-JP...) and says whether Nitrogen can open it. |
+| `helloworld.lua` | One dialog. The smallest gadget there is. |
+| `lineends.lua` | Counts CRLF, LF and CR line ends in the saved file, and says which one Nitrogen will save with when they are mixed. |
 | `md2pdf.lua` | Turns the saved Markdown file into a PDF next to it, with pandoc and typst. Unsaved edits are not included. |
+| `transform.lua` | Applies the XSLT in the active tab to the XML in the tab just to its left, with xsltproc. The result opens in a new tab. |
 | `validate.lua` | Validates the active tab against the XSD it names in `xsi:noNamespaceSchemaLocation`, by calling xmllint. Says so when xmllint is not on PATH. |
 | `xmlprettify.lua` | Indents the XML in the active tab with `xmllint --format`, in place (one undo step). Leaves the text alone and shows the error when it is not well-formed. |
-| `xslt1skel.lua` | Writes an XSLT 1.0 identity-transform skeleton. Fills the tab when it is empty, opens a new one when it is not. |
 | `xmlskel.lua` | Writes an XML skeleton that links to an XSD and a Schematron schema. Fills the tab when it is empty, opens a new one when it is not. |
+| `xslt1skel.lua` | Writes an XSLT 1.0 identity-transform skeleton. Fills the tab when it is empty, opens a new one when it is not. |
