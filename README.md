@@ -50,6 +50,6 @@ gadgets in a folder of your own.
 | `skel/skelxsd.lua` | XSD skeleton |
 | `skel/skelxslt1.lua` | XSLT 1.0 skeleton |
 | `xml/transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
-| `xml/validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in a `schematron` folder next to `nitrogenxml.exe` |
+| `xml/validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in an `sch` folder next to `nitrogenxml.exe` |
 | `xml/validatexsd.lua` | XSD validation, with xmllint |
 | `xml/xmlprettify.lua` | Indents XML, with xmllint |

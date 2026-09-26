@@ -31,7 +31,7 @@ if not is_absolute(sch) then
   sch = dir .. sch
 end
 
-local home = nitrogen.dir() .. package.config:sub(1, 1) .. "schematron"
+local home = nitrogen.dir() .. package.config:sub(1, 1) .. "sch"
 
 local function xsl(name)
   return home .. package.config:sub(1, 1) .. name
@@ -44,15 +44,17 @@ local needed = {
   "iso_schematron_skeleton_for_xslt1.xsl",
 }
 
+local base = "https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/"
+
 for _, name in ipairs(needed) do
   local f = io.open(xsl(name))
   if not f then
-    nitrogen.message(
+    local urls = {}
+    for i, n in ipairs(needed) do urls[i] = base .. n end
+    nitrogen.open_text(
       "The ISO Schematron XSLT 1.0 files were not found.\n\n" ..
-      "Download these from\n" ..
-      "https://github.com/Schematron/schematron/tree/master/trunk/schematron/code\n" ..
-      "and put them in " .. home .. ":\n\n  " ..
-      table.concat(needed, "\n  "))
+      "Download these four files and put them in\n" .. home .. "\n\n" ..
+      table.concat(urls, "\n") .. "\n", "schematron.txt")
     return
   end
   f:close()
