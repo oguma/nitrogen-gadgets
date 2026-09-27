@@ -1,11 +1,37 @@
 local rows = {}
 
 local function fields(line)
-  local out = {}
-  for f in (line .. ","):gmatch("([^,]*),") do
-    out[#out + 1] = (f:gsub("^%s+", ""):gsub("%s+$", ""))
+  local out, i = {}, 1
+  while true do
+    local s, f, c = line:match("^%s*()", i)
+    if line:sub(s, s) == '"' then
+      local buf, j = {}, s + 1
+      while true do
+        local q = line:find('"', j, true)
+        if not q then
+          buf[#buf + 1] = line:sub(j)
+          j = #line + 1
+          break
+        end
+        buf[#buf + 1] = line:sub(j, q - 1)
+        if line:sub(q + 1, q + 1) == '"' then
+          buf[#buf + 1] = '"'
+          j = q + 2
+        else
+          j = q + 1
+          break
+        end
+      end
+      f = table.concat(buf)
+      c = line:find(",", j, true)
+    else
+      c = line:find(",", i, true)
+      f = line:sub(i, (c or #line + 1) - 1):gsub("^%s+", ""):gsub("%s+$", "")
+    end
+    out[#out + 1] = f
+    if not c then return out end
+    i = c + 1
   end
-  return out
 end
 
 local function escape(s)
