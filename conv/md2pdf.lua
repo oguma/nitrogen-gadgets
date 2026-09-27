@@ -11,6 +11,7 @@ local pdf = path:sub(1, -4) .. ".pdf"
 local out, err, code = nitrogen.run("pandoc", {
   path, "-o", pdf,
   "--pdf-engine=typst",
+  "--no-highlight",
   "--resource-path=" .. dir,
   "-V", "mainfont=Segoe UI",
 })
