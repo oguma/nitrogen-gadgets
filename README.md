@@ -16,6 +16,7 @@ nitrogen.set_text(s)            -- replace it (one undo step; does not save)
 nitrogen.open_text(s [, name])  -- show s in a new tab (name: untitled.xml)
 nitrogen.message(s)             -- one dialog
 nitrogen.file_name([n])         -- path of the active tab, or nil when unsaved
+nitrogen.selected()             -- returns path, is folder (tree selection, or nil)
 
 nitrogen.run(exe, args, stdin)  -- returns stdout, stderr, exit code
 nitrogen.temp_file(s)           -- writes s to a temp file, returns its path
@@ -43,6 +44,7 @@ gadgets in a folder of your own.
 | `csv2xml.lua` | CSV to XML |
 | `json2xml.lua` | JSON, JSON Lines or NDJSON to XML |
 | `md2pdf.lua` | Markdown to PDF, with pandoc and typst |
+| `utf162utf8.lua` | Opens the UTF-16 file selected in the project tree as UTF-8 |
 | `skelsch.lua` | Schematron skeleton |
 | `skelxml.lua` | XML skeleton |
 | `skelxsd.lua` | XSD skeleton |
