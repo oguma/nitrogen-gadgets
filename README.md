@@ -41,6 +41,7 @@ gadgets in a folder of your own.
 | File | What it does |
 | --- | --- |
 | `csv2xml.lua` | CSV to XML |
+| `json2xml.lua` | JSON, JSON Lines or NDJSON to XML |
 | `md2pdf.lua` | Markdown to PDF, with pandoc and typst |
 | `skelsch.lua` | Schematron skeleton |
 | `skelxml.lua` | XML skeleton |
