@@ -52,6 +52,7 @@ gadgets in a folder of your own.
 | `encoding.lua` | Guesses the encoding of the saved file |
 | `lineends.lua` | Counts CRLF, LF and CR in the saved file |
 | `transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
+| `validatedtd.lua` | DTD validation, with xmllint |
 | `validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in an `sch` folder next to `nitrogenxml.exe` |
 | `validatexsd.lua` | XSD validation, with xmllint |
 | `viewsvg.lua` | Opens the SVG in the tab with the default viewer |
