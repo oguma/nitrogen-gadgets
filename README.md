@@ -43,6 +43,7 @@ gadgets in a folder of your own.
 | `csv2xml.lua` | CSV to XML |
 | `json2xml.lua` | JSON, JSON Lines or NDJSON to XML |
 | `md2pdf.lua` | Markdown to PDF, with pandoc and typst |
+| `skelrng.lua` | RELAX NG skeleton |
 | `skelsch.lua` | Schematron skeleton |
 | `skelxml.lua` | XML skeleton |
 | `skelxsd.lua` | XSD skeleton |
