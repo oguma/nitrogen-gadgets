@@ -58,4 +58,5 @@ gadgets in a folder of your own.
 | `validatesch.lua` | Schematron validation, with xsltproc and the ISO Schematron XSLT files in an `sch` folder next to `nitrogenxml.exe` |
 | `validatexsd.lua` | XSD validation, with xmllint |
 | `viewsvg.lua` | Opens the SVG in the tab with the default viewer |
+| `viewx3d.lua` | Opens the X3D in the tab with Castle Model Viewer (the saved file, so relative URLs work) |
 | `xmlprettify.lua` | Indents XML, with xmllint |
