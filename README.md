@@ -49,6 +49,8 @@ gadgets in a folder of your own.
 | `skelxsd.lua` | XSD skeleton |
 | `skelxslt1.lua` | XSLT 1.0 skeleton |
 | `charcount.lua` | Counts characters, bytes and lines |
+| `encrypt.lua` | Encrypts the tab, after its first line, with the first line as the passphrase (repeating-key XOR, as hex) |
+| `decrypt.lua` | Decrypts it back, with the passphrase on the first line |
 | `diff.lua` | Compares the tab to its left with the active tab, as a unified diff |
 | `encoding.lua` | Guesses the encoding of the saved file |
 | `lineends.lua` | Counts CRLF, LF and CR in the saved file |
