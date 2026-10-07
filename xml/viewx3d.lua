@@ -17,7 +17,7 @@ if found ~= 0 then
 end
 
 if windows then
-  nitrogen.run("cmd", { "/c", "start", "", exe, path })
+  nitrogen.run("cmd", { "/c", "start", "", exe, "--hide-extras", path })
 else
-  nitrogen.run("sh", { "-c", exe .. ' "$1" >/dev/null 2>&1 &', "sh", path })
+  nitrogen.run("sh", { "-c", exe .. ' --hide-extras "$1" >/dev/null 2>&1 &', "sh", path })
 end
