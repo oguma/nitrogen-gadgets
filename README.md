@@ -16,14 +16,17 @@ nitrogen.set_text(s)            -- replace it (one undo step; does not save)
 nitrogen.open_text(s [, name])  -- show s in a new tab (name: untitled.xml)
 nitrogen.message(s)             -- one dialog
 nitrogen.file_name([n])         -- path of the active tab, or nil when unsaved
+nitrogen.project()              -- the project tree as XML, or nil when none
 
 nitrogen.run(exe, args, stdin)  -- returns stdout, stderr, exit code
 nitrogen.temp_file(s)           -- writes s to a temp file, returns its path
 nitrogen.dir()                  -- the folder nitrogenxml.exe is in
 ```
 
-`n` picks a tab: `-1` is the one to the left. Lua 5.4 with its full standard
-library.
+`n` picks a tab: `-1` is the one to the left. In `project()`, every `<dir>`
+and `<file>` has its `name`, and the root also has the project folder in
+`path`.
+Lua 5.4 with its full standard library.
 
 `run` can call anything on the machine, even Claude:
 
@@ -54,6 +57,7 @@ gadgets in a folder of your own.
 | `diff.lua` | Compares the tab to its left with the active tab, as a unified diff |
 | `encoding.lua` | Guesses the encoding of the saved file |
 | `lineends.lua` | Counts CRLF, LF and CR in the saved file |
+| `projectxml.lua` | Opens the project tree as XML |
 | `transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
 | `validatedtd.lua` | DTD validation, with xmllint |
 | `validaterng.lua` | RELAX NG validation (.rng, not .rnc), with xmllint |
