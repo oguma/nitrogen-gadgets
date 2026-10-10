@@ -1,13 +1,7 @@
 local exe = "castle-model-viewer"
 local windows = package.config:sub(1, 1) == "\\"
 
-local path = nitrogen.file_name()
-if not path then
-  local tmp = nitrogen.temp_file(nitrogen.text())
-  path = tmp:gsub("%.[^.\\/]*$", "") .. ".x3d"
-  os.remove(path)
-  assert(os.rename(tmp, path))
-end
+local path = nitrogen.file_name() or nitrogen.temp_file(nitrogen.text(), ".x3d")
 
 local _, _, found = nitrogen.run(windows and "where" or "which", { exe })
 if found ~= 0 then

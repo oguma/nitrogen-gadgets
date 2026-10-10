@@ -1,12 +1,9 @@
-local svg = nitrogen.temp_file(nitrogen.text())
-local new = svg:gsub("%.[^.\\/]*$", "") .. ".svg"
-os.remove(new)
-assert(os.rename(svg, new))
+local svg = nitrogen.temp_file(nitrogen.text(), ".svg")
 
 if package.config:sub(1, 1) == "\\" then
-  nitrogen.run("cmd", { "/c", "start", "", new })
+  nitrogen.run("cmd", { "/c", "start", "", svg })
 elseif nitrogen.run("uname", {}):match("^Darwin") then
-  nitrogen.run("open", { new })
+  nitrogen.run("open", { svg })
 else
-  nitrogen.run("xdg-open", { new })
+  nitrogen.run("xdg-open", { svg })
 end

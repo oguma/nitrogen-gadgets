@@ -19,7 +19,7 @@ nitrogen.file_name([n])         -- path of the active tab, or nil when unsaved
 nitrogen.project()              -- the project tree as XML, or nil when none
 
 nitrogen.run(exe, args, stdin)  -- returns stdout, stderr, exit code
-nitrogen.temp_file(s)           -- writes s to a temp file, returns its path
+nitrogen.temp_file(s [, ext])   -- writes s to a temp file (ext: .tmp), returns its path
 nitrogen.dir()                  -- the folder nitrogenxml.exe is in
 ```
 
