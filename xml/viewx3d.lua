@@ -5,7 +5,8 @@ local path = nitrogen.file_name()
 if not path then
   local tmp = nitrogen.temp_file(nitrogen.text())
   path = tmp:gsub("%.[^.\\/]*$", "") .. ".x3d"
-  os.rename(tmp, path)
+  os.remove(path)
+  assert(os.rename(tmp, path))
 end
 
 local _, _, found = nitrogen.run(windows and "where" or "which", { exe })
