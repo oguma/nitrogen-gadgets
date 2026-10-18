@@ -57,7 +57,6 @@ gadgets in a folder of your own.
 | `diff.lua` | Compares the tab to its left with the active tab, as a unified diff |
 | `encoding.lua` | Guesses the encoding of the saved file |
 | `lineends.lua` | Counts CRLF, LF and CR in the saved file |
-| `openwin.lua` | Opens the file of the tab in another Nitrogen |
 | `projectxml.lua` | Opens the project tree as XML |
 | `transform.lua` | Applies the XSLT to the XML in the tab to its left, with xsltproc |
 | `validatedtd.lua` | DTD validation, with xmllint |
