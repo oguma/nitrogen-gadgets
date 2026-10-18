@@ -43,6 +43,7 @@ gadgets in a folder of your own.
 
 | File | What it does |
 | --- | --- |
+| `openwin.lua` | Opens the file of the tab in a new Nitrogen window |
 | `csv2xml.lua` | CSV to XML |
 | `json2xml.lua` | JSON, JSON Lines or NDJSON to XML |
 | `md2pdf.lua` | Markdown to PDF, with pandoc and typst |
