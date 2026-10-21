@@ -1,4 +1,4 @@
-local svg = nitrogen.temp_file(nitrogen.text(), ".svg")
+local svg = nitrogen.file_name() or nitrogen.temp_file(nitrogen.text(), ".svg")
 
 if package.config:sub(1, 1) == "\\" then
   nitrogen.run("cmd", { "/c", "start", "", svg })
