@@ -1,4 +1,4 @@
-local skeleton = [[
+local skeleton = [=[
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="data.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="data.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
@@ -8,8 +8,9 @@ local skeleton = [[
       xsi:noNamespaceSchemaLocation="data.xsd">
   <xi:include href="part.xml"/>
   <item id="1">text</item>
+  <item id="2"><![CDATA[text]]></item>
 </root>
-]]
+]=]
 
 local ok, current = pcall(nitrogen.text)
 
